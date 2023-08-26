@@ -1,5 +1,6 @@
 # vim-setting
 
+`cp ~/.vimrc .vimrc`
 
 1. Install Vim
 
