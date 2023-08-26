@@ -172,3 +172,29 @@ if has("autocmd")
     \ endif
   augroup END
 endif
+
+let g:terminal_bufnr = -1
+function! ToggleTerminal()
+  if &buftype == 'terminal'
+    " If the current buffer is a terminal, go back to the previous buffer
+    execute "buffer #"
+    execute "close"
+  else
+    " If the current buffer is not a terminal, try to find the terminal buffer
+    if bufexists(g:terminal_bufnr)
+      " If the terminal buffer exists, switch to it
+      execute 'split'
+      execute "buffer " . g:terminal_bufnr
+      execute "normal i"
+
+    else
+      " If no terminal buffer exists, create a new one and save its buffer number
+      terminal
+      let g:terminal_bufnr = bufnr('%')
+    endif
+
+  endif
+endfunction
+
+nnoremap <silent> <C-t> :call ToggleTerminal()<CR>
+tnoremap <silent> <C-t> <C-\><C-n>:call ToggleTerminal()<CR>
