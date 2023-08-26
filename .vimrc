@@ -21,9 +21,16 @@ nnoremap <F2> :NERDTreeToggle<CR>
 :colorscheme slate
 
 " closing brasket
-:inoremap ( ()<left>
-:inoremap [ []<left>
-:inoremap { {}<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap [<CR> [<CR>]<ESC>O
+inoremap (<CR> (<CR>)<ESC>O
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ` ``<left>
+
 
 " languages setting
 filetype plugin on
